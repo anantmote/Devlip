@@ -30,7 +30,7 @@ class Admin::CoursesController < ApplicationController
     @course = Course.find(params[:id])
     if @course.update_attributes(course_params)
       flash[:success] = "Course is updated successfully!"
-      redirect_to [:admin, @course]
+      redirect_to [:admin_course]
     else
       render 'edit'
     end

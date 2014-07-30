@@ -1,5 +1,11 @@
 <h1>Course List</h1> <br>
 
+<%= link_to 'Add New Course', new_admin_course_path, class: "btn btn-info" %>&nbsp;&nbsp;
+ <%= link_to 'Dashboard(Home)', admin_path, class: "btn btn-info" %>
+ <br><br>  
+<% if @course.count == 0 %>
+<%= "No record presents" %>
+<% else %>
 <table border=1 cellspaceing="5">
 	<tr>
 		<td>Title</td>
@@ -10,7 +16,7 @@
 	</tr>
 	<% @course.each do |course| %>
 		<tr>
-			<td><%= course.title %></td>
+			<td><%= link_to course.title , [:admin, course] %></td>
 			<td><%= course.description %></td>
 			<td><%= course.duration %></td>
 			<td><%= link_to "Edit", edit_admin_course_path(course) %></td>
@@ -18,8 +24,8 @@
 			</td>
 		</tr>
 	<% end %>
-</table>	
- <br>
- <%= link_to 'Add New Course', new_admin_course_path, class: "btn btn-info" %>
- <br><br>  
+</table>
+<% end %>	
+ <br><br>
+ 
   

@@ -118,9 +118,18 @@ Play video => when video ends rePlay and next step quiz btn
 then quiz form => skip Quiz and replay video
 if start quiz then above 2 btn disabled and next Question btn will appear
 
+anantmote/anantmote15
+
 git init
 git add .
 git commint -m "message"
+goto github.com...created account .
+git remote add origin https://github.com/anantmote/Devlip.git
+git push -u origin master
+added repostiory
+Username for 'https://github.com': anantmote
+Password for 'https://anantmote@github.com': 
+
 ============================================================================================================================================
 
 Flow of Project
