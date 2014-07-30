@@ -1,0 +1,128 @@
+ plural convention for controller names, model names are singular
+
+Install devise
+Open up your Gemfile and add this line gem 'devise'
+run bundle install
+run rails g devise:install
+
+Some setup you must do manually if you haven't yet:
+
+  1. Ensure you have defined default url options in your environments files. Here
+     is an example of default_url_options appropriate for a development environment
+     in config/environments/development.rb:
+
+       config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
+     In production, :host should be set to the actual host of your application.
+
+  2. Ensure you have defined root_url to *something* in your config/routes.rb.
+     For example:
+
+       root to: "home#index"
+
+  3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+     For example:
+
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+  4. If you are deploying on Heroku with Rails 3.2 only, you may want to set:
+
+       config.assets.initialize_on_precompile = false
+
+     On config/application.rb forcing your application to not access the DB
+     or load models when precompiling your assets.
+
+  5. You can copy Devise views (for customization) to your app by running:
+
+       rails g devise:views
+
+cd var/www/rails_projects/devlip
+
+change gemfile to set database
+bundle update
+bundle install
+
+rails generate controller admin/dashboard index => generate admin folder with dashboard controller
+Change route.db => add 
+namespace :admin do 
+    get '', to: 'dashboard#index', as: '/' 
+end 
+and now hit http://localhost:3000/admin
+
+Controller
+To create course created course controller manually.
+added "resources :courses" in routes file
+created show,new and index.html.erb in app/view/admin/courses folder
+
+Model
+rails generate model Course title:string description:string duration:integer ==>Generates user course table
+bundle exec rake db:migrate => it creates a file called db/development.sqlite3, which is an SQLite database.
+
+test in sandbox => rails console --sandbox
+
+ Course.new
+=> #<Course id: nil, title: nil, description: nil, duration: nil, created_at: nil, updated_at: nil>
+
+course = Course.new(title: "test", description: "test12", duration: 2)
+course.save =>true
+
+Course.create(title: "test", description: "test12", duration: 2)
+
+to save in sqlite database
+rails c => loads development environment
+
+Course.create(title: "test", description: "test12", duration: 2)
+   (0.1ms)  begin transaction
+  SQL (0.4ms)  INSERT INTO "courses" ("created_at", "description", "duration", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-07-29 07:25:48.288096"], ["description", "test12"], ["duration", 2], ["title", "test"], ["updated_at", "2014-07-29 07:25:48.288096"]]
+   (136.8ms)  commit transaction
+=> #<Course id: 1, title: "test", description: "test12", duration: 2, created_at: "2014-07-29 07:25:48", updated_at: "2014-07-29 07:25:48">
+irb(main):002:0> 
+
+data validations add in model course.rb
+validates :title, presence: true
+
+course = Course.new(title: "", description: "test12", duration: 2)
+=> #<Course id: nil, title: "", description: "test12", duration: 2, created_at: nil, updated_at: nil>
+irb(main):002:0> course.save
+ => false
+irb(main):003:0> course.valid?
+=> false
+irb(main):004:0> course.errors.full_messages
+=> ["Title can't be blank"]
+irb(main):005:0> 
+
+add index to title
+rails generate migration add_index_to_courses_title
+add following text to
+class AddIndexToCoursesTitle < ActiveRecord::Migration
+  def change
+    add_index :courses, :title, unique: true
+  end
+end
+
+bundle exec rake db:migrate
+
+add new column to a table
+# rails generate migration add_password_digest_to_users password_digest:string
+
+Course.create(title: "RubyonRails11", description: "Ruby on Rails framework", duration: 2)
+
+//http://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html#M002290
+
+To display the messages in the browser, we’ll render an error-messages partial on the user new page
+
+//Section page
+video button and quiz btn(discabled)
+Play video => when video ends rePlay and next step quiz btn
+then quiz form => skip Quiz and replay video
+if start quiz then above 2 btn disabled and next Question btn will appear
+
+git init
+git add .
+git commint -m "message"
+============================================================================================================================================
+
+Flow of Project
+
+1.Create Course => Title, description, duration

@@ -1,0 +1,25 @@
+<h1>Course List</h1> <br>
+
+<table border=1 cellspaceing="5">
+	<tr>
+		<td>Title</td>
+		<td>Description</td>
+		<td>Duration</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<% @course.each do |course| %>
+		<tr>
+			<td><%= course.title %></td>
+			<td><%= course.description %></td>
+			<td><%= course.duration %></td>
+			<td><%= link_to "Edit", edit_admin_course_path(course) %></td>
+			<td><%= link_to "delete", [:admin, course], method: :delete, data: { confirm: 'Are you sure?' } %>	
+			</td>
+		</tr>
+	<% end %>
+</table>	
+ <br>
+ <%= link_to 'Add New Course', new_admin_course_path, class: "btn btn-info" %>
+ <br><br>  
+  

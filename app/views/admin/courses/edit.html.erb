@@ -1,0 +1,26 @@
+<h1>Edit Course</h1> 
+<%= form_for([:admin, @course]) do |c| %>
+<table>
+    
+    	<%= render 'shared/error_messages' %>
+		<tr>
+		     <td> <%= c.label :title %></td>
+		     <td> <%= c.text_field :title %></td>
+		</tr>
+
+		<tr>
+		     <td><%= c.label :description %></td>
+		      <td><%= c.text_area :description %></td>
+		</tr>
+
+		<tr>
+		     <td><%= c.label :duration %></td>
+		      <td><%= c.text_field :duration %></td>
+		</tr>
+		 
+	    <tr>
+	     	<td> <%= c.submit "Save changes", class: "btn btn-large btn-primary" %></td>
+	    </tr>
+    
+</table>  
+<% end %>
