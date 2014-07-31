@@ -11,6 +11,15 @@
 		<td>Duration</td><td>:</td><td><%= @course.duration %></td>
 	</tr>
 </table>	
+
+<div class="span8">
+    <% if @course.sections.any? %>
+      <h3>Sections (<%= @course.sections.count %>)</h3>
+      <%#= #render @sections %>
+      
+    <% end %>
+  </div>
+
 <br>
 <td><%= link_to 'Back', admin_courses_path, class: "btn btn-info" %></td>
 <br>

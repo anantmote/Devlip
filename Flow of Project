@@ -1,4 +1,4 @@
- plural convention for controller names, model names are singular
+plural convention for controller names, model names are singular
 
 Install devise
 Open up your Gemfile and add this line gem 'devise'
@@ -120,7 +120,7 @@ if start quiz then above 2 btn disabled and next Question btn will appear
 
 anantmote/anantmote15
 
-git init
+git init (First time only)
 git add .
 git commint -m "message"
 goto github.com...created account .
@@ -129,6 +129,16 @@ git push -u origin master
 added repostiory
 Username for 'https://github.com': anantmote
 Password for 'https://anantmote@github.com': 
+
+
+course =>title,description
+section => title,course_id,videourl
+Quiz =>section_id,Q1,opt1,opt2,opt3,opt4,Ans
+
+
+rails generate model Section course_id:integer title:string 
+rails generate migration add_videourl_to_sections title:string --force
+Use --force to replace this migration file.
 
 ============================================================================================================================================
 

@@ -1,0 +1,22 @@
+<h1>Edit Section</h1> 
+ <%= form_for([:admin, @section]) do |s| %>
+<table>
+   
+    	<%= render 'shared/error_messages', object: s.object %>
+		<tr>
+		     <td> <%= s.label :title %></td>
+		     <td> <%= s.text_field :title %></td>
+		</tr>
+
+		<tr>
+		     <td> <%= s.label :VideoUrl %></td>
+		     <td> <%= s.text_field :videourl %></td>
+		</tr>
+				
+	    <tr>
+	     	<td><%= s.submit "Update new section", class: "btn btn-large btn-primary" %></td>
+	     	<td><%= link_to 'Cancel', admin_courses_path, class: "btn btn-info" %></td>
+	    </tr>
+    
+</table>  
+<% end %>

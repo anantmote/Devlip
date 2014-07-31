@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140729081229) do
+ActiveRecord::Schema.define(version: 20140731082215) do
 
   create_table "courses", force: true do |t|
     t.string   "title"
@@ -22,5 +22,15 @@ ActiveRecord::Schema.define(version: 20140729081229) do
   end
 
   add_index "courses", ["title"], name: "index_courses_on_title", unique: true
+
+  create_table "sections", force: true do |t|
+    t.integer  "course_id"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "videourl"
+  end
+
+  add_index "sections", ["course_id", "created_at"], name: "index_sections_on_course_id_and_created_at"
 
 end

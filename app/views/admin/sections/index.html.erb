@@ -1,0 +1,27 @@
+<h1>Section List</h1> <br>
+
+ <%= link_to 'Dashboard(Home)', admin_path, class: "btn btn-info" %>
+ <br><br>  
+<% if @section.count == 0 %>
+<%= "No record presents" %>
+<% else %>
+<table border=1 cellspaceing="5">
+	<tr>
+		<td>Title</td>
+		<td>Video Url</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<% @section.each do |section| %>
+		<tr>
+			<td><%= link_to section.title , [:admin, section] %></td>
+			<td><%= section.videourl %></td>
+			<td><%= link_to "Edit", edit_admin_section_path(section) %></td>
+			<td><%= link_to "delete", [:admin, section], method: :delete, data: { confirm: 'Are you sure?' } %>	
+		</tr>
+	<% end %>
+</table>
+<% end %>	
+ <br><br>
+ 
+  

@@ -13,6 +13,8 @@
 		<td>Duration</td>
 		<td></td>
 		<td></td>
+		<td></td>
+		<td></td>
 	</tr>
 	<% @course.each do |course| %>
 		<tr>
@@ -21,7 +23,8 @@
 			<td><%= course.duration %></td>
 			<td><%= link_to "Edit", edit_admin_course_path(course) %></td>
 			<td><%= link_to "delete", [:admin, course], method: :delete, data: { confirm: 'Are you sure?' } %>	
-			</td>
+			<td><%= link_to "Add Sections" , new_admin_section_path(:course_id=> course.id)  %></td>
+			<td><%= link_to "View Sections" , admin_sections_path(:course_id=> course.id)  %></td>
 		</tr>
 	<% end %>
 </table>
